@@ -354,6 +354,90 @@
         Rp 0
 
       </h2>
+  </div>
+
+    <!-- COUNTDOWN WEDDING -->
+    <div class="
+      glass
+      rounded-3xl
+      p-8
+      mb-10
+    ">
+
+      <div class="
+        flex
+        flex-col
+        md:flex-row
+        md:items-center
+        md:justify-between
+        gap-5
+      ">
+
+        <div>
+
+          <p class="
+            text-sm
+            text-gray-500
+          ">
+
+            💍 Menuju Hari Pernikahan
+
+          </p>
+
+          <h2
+            id="countdownDays"
+            class="
+              text-4xl
+              font-bold
+              mt-2
+              text-rose-600
+            "
+          >
+
+            0 Hari Lagi
+
+          </h2>
+
+          <p
+            id="weddingDateText"
+            class="
+              mt-2
+              text-gray-500
+            "
+          >
+
+            Belum menentukan tanggal
+
+          </p>
+
+        </div>
+
+        <!-- INPUT TANGGAL -->
+
+        <div class="
+          flex
+          flex-col
+          gap-3
+        ">
+
+          <input
+            type="date"
+            id="weddingDate"
+            class="input-modern"
+          >
+
+          <button
+            onclick="saveWeddingDate()"
+            class="btn-primary"
+          >
+
+            Simpan Tanggal
+
+          </button>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -1850,6 +1934,163 @@
 
     }
 
+    // =========================
+  // COUNTDOWN WEDDING
+  // =========================
+
+  let weddingDate =
+    localStorage.getItem(
+      "weddingDate"
+    );
+
+  // LOAD COUNTDOWN
+
+  loadWeddingCountdown();
+
+  // =========================
+  // SAVE DATE
+  // =========================
+
+  function saveWeddingDate(){
+
+    const selectedDate =
+      document.getElementById(
+        "weddingDate"
+      ).value;
+
+    if(!selectedDate){
+
+      showToast(
+        "Pilih tanggal dulu"
+      );
+
+      return;
+
+    }
+
+    // SIMPAN
+
+    localStorage.setItem(
+      "weddingDate",
+      selectedDate
+    );
+
+    weddingDate =
+      selectedDate;
+
+    // UPDATE
+
+    loadWeddingCountdown();
+
+    showToast(
+      "Tanggal wedding berhasil disimpan"
+    );
+
+  }
+
+  // =========================
+  // LOAD COUNTDOWN
+  // =========================
+
+  function loadWeddingCountdown(){
+
+    if(!weddingDate){
+
+      document.getElementById(
+        "countdownDays"
+      ).innerText =
+      "Belum Ada";
+
+      return;
+
+    }
+
+    // TANGGAL ACARA
+
+    const eventDate =
+      new Date(
+        weddingDate
+      );
+
+    // HARI INI
+
+    const today =
+      new Date();
+
+    // SELISIH
+
+    const diffTime =
+      eventDate - today;
+
+    const diffDays =
+      Math.ceil(
+        diffTime /
+        (
+          1000 *
+          60 *
+          60 *
+          24
+        )
+      );
+
+    // TAMPILKAN
+
+    if(diffDays > 0){
+
+      document.getElementById(
+        "countdownDays"
+      ).innerText =
+      diffDays +
+      " Hari Lagi";
+
+    }
+
+    else if(diffDays === 0){
+
+      document.getElementById(
+        "countdownDays"
+      ).innerText =
+      "Hari Pernikahan 🎉";
+
+    }
+
+    else{
+
+      document.getElementById(
+        "countdownDays"
+      ).innerText =
+      "Acara Selesai";
+
+    }
+
+    // FORMAT TANGGAL
+
+    document.getElementById(
+      "weddingDateText"
+    ).innerText =
+    eventDate.toLocaleDateString(
+      "id-ID",
+      {
+
+        weekday:'long',
+
+        year:'numeric',
+
+        month:'long',
+
+        day:'numeric'
+
+      }
+    );
+
+    // SET INPUT VALUE
+
+    document.getElementById(
+      "weddingDate"
+    ).value =
+    weddingDate;
+
+  }
   </script>
 
 </body>
