@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Wedding Planner Premium</title>
+
+  <!-- Tailwind -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Lucide -->
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:
+      linear-gradient(
+        to bottom,
+        #fffaf5,
+        #f6f1eb
+      );
+      color:#1f2937;
+      min-height:100vh;
+    }
+
+    .font-display{
+      font-family:'Playfair Display',serif;
+    }
+
+    .glass{
+      background:rgba(255,255,255,.75);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,.5);
+      box-shadow:
+      0 10px 30px rgba(0,0,0,.05);
+    }
+
+    .input-modern{
+      width:100%;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:14px;
+      background:white;
+      transition:.3s;
+    }
+
+    .input-modern:focus{
+      outline:none;
+      border-color:#c6a27e;
+      box-shadow:
+      0 0 0 4px rgba(198,162,126,.15);
+    }
+
+    .btn-primary{
+      background:
+      linear-gradient(
+        135deg,
+        #b08968,
+        #d4a373
+      );
+
+      color:white;
+      padding:14px;
+      border-radius:16px;
+      font-weight:600;
+      transition:.3s;
+      cursor:pointer;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .table-row{
+      transition:.3s;
+    }
+
+    .table-row:hover{
+      background:#fff7ed;
+    }
+
+    .toast{
+      position:fixed;
+      top:20px;
+      right:20px;
+      background:#111827;
+      color:white;
+      padding:14px 20px;
+      border-radius:14px;
+      z-index:9999;
+      box-shadow:
+      0 10px 30px rgba(0,0,0,.15);
+    }
+
+    .hidden{
+      display:none;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="
+    relative
+    h-[300px]
+    overflow-hidden
+  ">
+
+    <img
+      src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400"
+      class="
+        w-full
+        h-full
+        object-cover
+      "
+    >
+
+    <div class="
+      absolute inset-0
+      bg-black/50
+      flex flex-col
+      justify-center
+      items-center
+      text-white
+    ">
+
+      <h1 class="
+        font-display
+        text-5xl
+        font-bold
+      ">
+
+        Wedding Planner Riski & Fadiah
+
+      </h1>
+
+      <p class="mt-4 text-lg">
+
+        Kelola Pernikahan Impianmu
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTENT -->
+
+  <main class="
+    max-w-7xl
+    mx-auto
+    px-5
+    py-10
+  ">
+
+    <!-- STATS -->
+
+    <div class="
+      grid
+      grid-cols-2
+      md:grid-cols-4
+      gap-4
+      mb-10
+    ">
+
+      <!-- TOTAL BUDGET -->
+
+      <div class="
+        glass
+        rounded-3xl
+        p-6
+      ">
+
+        <p class="
+          text-sm
+          text-gray-500
+        ">
+
+          Total Budget
+
+        </p>
+
+        <h2
+          id="totalBudget"
+          class="
+            text-2xl
+            font-bold
+            mt-2
+            text-amber-700
+          "
+        >
+
+          Rp 0
+
+        </h2>
+
+      </div>
+
+      <!-- SUDAH DIBAYAR -->
+
+      <div class="
+        glass
+        rounded-3xl
+        p-6
+      ">
+
+        <p class="
+          text-sm
+          text-gray-500
+        ">
+
+          Sudah Dibayar
+
+        </p>
+
+        <h2
+          id="totalPaid"
+          class="
+            text-2xl
+            font-bold
+            mt-2
+            text-green-600
+          "
+        >
+
+          Rp 0
+
+        </h2>
+
+      </div>
+
+      <!-- SISA BUDGET -->
+
+      <div class="
+        glass
+        rounded-3xl
+        p-6
+      ">
+
+        <p class="
+          text-sm
+          text-gray-500
+        ">
+
+          Belum Dibayar
+
+        </p>
+
+        <h2
+          id="remaining"
+          class="
+            text-2xl
+            font-bold
+            mt-2
+            text-red-500
+          "
+        >
+
+          Rp 0
+
+        </h2>
+
+      </div>
+
+      <!-- TOTAL TABUNGAN -->
+
+      <div class="
+        glass
+        rounded-3xl
+        p-6
+      ">
+
+        <p class="
+          text-sm
+          text-gray-500
+        ">
+
+          Total Tabungan
+
+        </p>
+
+        <h2
+          id="totalSavings"
+          class="
+            text-2xl
+            font-bold
+            mt-2
+            text-blue-600
+          "
+        >
+
+          Rp 0
+
+        </h2>
+
+      </div>
+
+    </div>
+
+    <!-- SISA TABUNGAN -->
+
+    <div class="
+      glass
+      rounded-3xl
+      p-6
+      mb-10
+    ">
+
+      <p class="
+        text-sm
+        text-gray-500
+      ">
+
+        Sisa Tabungan
+
+      </p>
+
+      <h2
+        id="remainingSavings"
+        class="
+          text-2xl
+          font-bold
+          mt-2
+          text-indigo-600
+        "
+      >
+
+        Rp 0
+
+      </h2>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="
+      glass
+      rounded-3xl
+      p-6
+      mb-6
+    ">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari data wedding..."
+        class="input-modern"
+      >
+
+    </div>
+
+    <!-- FILTER -->
+
+    <div class="
+      glass
+      rounded-3xl
+      p-6
+      mb-10
+    ">
+
+      <div class="
+        grid
+        md:grid-cols-2
+        gap-4
+      ">
+
+        <!-- FILTER KATEGORI -->
+
+        <select
+          id="filterCategory"
+          class="input-modern"
+        >
+
+          <option value="Semua">
+            Semua Kategori
+          </option>
+
+          <option value="Undangan">
+            Undangan
+          </option>
+
+          <option value="Venue">
+            Venue
+          </option>
+
+          <option value="Catering">
+            Catering
+          </option>
+
+          <option value="Dekorasi">
+            Dekorasi
+          </option>
+
+          <option value="Dokumentasi">
+            Dokumentasi
+          </option>
+
+          <option value="Hiburan">
+            Hiburan
+          </option>
+
+          <option value="Barang">
+            Barang
+          </option>
+
+        </select>
+
+        <!-- FILTER STATUS -->
+
+        <select
+          id="filterStatus"
+          class="input-modern"
+        >
+
+          <option value="Semua">
+            Semua Status
+          </option>
+
+          <option value="Belum Lunas">
+            Belum Lunas
+          </option>
+
+          <option value="DP">
+            DP
+          </option>
+
+          <option value="Sudah Lunas">
+            Sudah Lunas
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <!-- FORM WEDDING -->
+
+    <div class="
+      glass
+      rounded-3xl
+      p-8
+      mb-10
+    ">
+
+      <div class="
+        flex
+        items-center
+        gap-3
+        mb-8
+      ">
+
+        <i data-lucide="sparkles"></i>
+
+        <h2 class="
+          text-2xl
+          font-bold
+        ">
+
+          Tambah Data Wedding
+
+        </h2>
+
+      </div>
+
+      <form
+        id="plannerForm"
+        class="
+          grid
+          md:grid-cols-2
+          lg:grid-cols-3
+          gap-5
+        "
+      >
+
+        <!-- KATEGORI -->
+
+        <select
+          id="category"
+          class="input-modern"
+          required
+        >
+
+          <option value="">
+            Pilih Kategori
+          </option>
+
+          <option value="Undangan">
+            Undangan
+          </option>
+
+          <option value="Venue">
+            Venue
+          </option>
+
+          <option value="Catering">
+            Catering
+          </option>
+
+          <option value="Dekorasi">
+            Dekorasi
+          </option>
+
+          <option value="Dokumentasi">
+            Dokumentasi
+          </option>
+
+          <option value="Hiburan">
+            Hiburan
+          </option>
+
+          <option value="Barang">
+            Barang
+          </option>
+
+        </select>
+
+        <!-- ITEM -->
+
+        <input
+          type="text"
+          id="item"
+          placeholder="Nama Barang / Paket"
+          class="input-modern"
+          required
+        >
+
+        <!-- VENDOR -->
+
+        <input
+          type="text"
+          id="vendor"
+          placeholder="Vendor"
+          class="input-modern"
+        >
+
+        <!-- BIAYA -->
+
+        <input
+          type="number"
+          id="cost"
+          placeholder="Biaya"
+          class="input-modern"
+          required
+        >
+
+        <!-- STATUS -->
+
+        <select
+          id="status"
+          class="input-modern"
+        >
+
+          <option value="Belum Lunas">
+            Belum Lunas
+          </option>
+
+          <option value="DP">
+            DP
+          </option>
+
+          <option value="Sudah Lunas">
+            Sudah Lunas
+          </option>
+
+        </select>
+
+        <!-- CATATAN -->
+
+        <input
+          type="text"
+          id="notes"
+          placeholder="Catatan"
+          class="input-modern"
+        >
+
+        <!-- BUTTON -->
+
+        <button
+          type="submit"
+          class="
+            btn-primary
+            lg:col-span-3
+          "
+        >
+
+          Simpan Data
+
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- FORM TABUNGAN -->
+
+    <div class="
+      glass
+      rounded-3xl
+      p-8
+      mb-10
+    ">
+
+      <div class="
+        flex
+        items-center
+        gap-3
+        mb-8
+      ">
+
+        <i data-lucide="piggy-bank"></i>
+
+        <h2 class="
+          text-2xl
+          font-bold
+        ">
+
+          Tambah Tabungan
+
+        </h2>
+
+      </div>
+
+      <form
+        id="savingForm"
+        class="
+          grid
+          md:grid-cols-3
+          gap-5
+        "
+      >
+
+        <input
+          type="text"
+          id="savingName"
+          placeholder="Nama Penabung"
+          class="input-modern"
+          required
+        >
+
+        <input
+          type="number"
+          id="savingAmount"
+          placeholder="Jumlah Tabungan"
+          class="input-modern"
+          required
+        >
+
+        <input
+          type="text"
+          id="savingNotes"
+          placeholder="Catatan Tabungan"
+          class="input-modern"
+        >
+
+        <button
+          type="submit"
+          class="
+            btn-primary
+            md:col-span-3
+          "
+        >
+
+          Simpan Tabungan
+
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- TABLE WEDDING -->
+
+    <div class="
+      glass
+      rounded-3xl
+      overflow-hidden
+      mb-10
+    ">
+
+      <div class="p-6 border-b">
+
+        <h2 class="
+          text-2xl
+          font-bold
+        ">
+
+          Daftar Wedding Planner
+
+        </h2>
+
+      </div>
+
+      <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+          <thead class="bg-amber-50">
+
+            <tr>
+
+              <th class="px-6 py-4 text-left">
+                Kategori
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Item
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Vendor
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Harga
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Status
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Catatan
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Aksi
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="tableBody">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE TABUNGAN -->
+
+    <div class="
+      glass
+      rounded-3xl
+      overflow-hidden
+    ">
+
+      <div class="p-6 border-b">
+
+        <h2 class="
+          text-2xl
+          font-bold
+        ">
+
+          Riwayat Tabungan
+
+        </h2>
+
+      </div>
+
+      <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+          <thead class="bg-blue-50">
+
+            <tr>
+
+              <th class="px-6 py-4 text-left">
+                Nama
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Jumlah
+              </th>
+
+              <th class="px-6 py-4 text-left">
+                Catatan
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="savingTableBody">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- TOAST -->
+
+  <div
+    id="toast"
+    class="
+      toast
+      hidden
+    "
+  ></div>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    lucide.createIcons();
+
+    // =========================
+    // URL APPS SCRIPT
+    // =========================
+
+    const WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbx8w3V6fVy0Lg7D0pxOYx7dJhelZj1bSInFg4B_8mTjbwZtLxI8xT62lCep62H5Pzhk/exec";
+
+    // =========================
+    // VARIABLE
+    // =========================
+
+    let weddingData = [];
+
+    let savingHistory = [];
+
+    let totalBudget = 0;
+
+    let totalPaid = 0;
+
+    let totalSavings = 0;
+
+    let editId = null;
+
+    // =========================
+    // ELEMENT
+    // =========================
+
+    const plannerForm =
+      document.getElementById(
+        "plannerForm"
+      );
+
+    const savingForm =
+      document.getElementById(
+        "savingForm"
+      );
+
+    const tableBody =
+      document.getElementById(
+        "tableBody"
+      );
+
+    const savingTableBody =
+      document.getElementById(
+        "savingTableBody"
+      );
+
+    const searchInput =
+      document.getElementById(
+        "searchInput"
+      );
+
+    const filterCategory =
+      document.getElementById(
+        "filterCategory"
+      );
+
+    const filterStatus =
+      document.getElementById(
+        "filterStatus"
+      );
+
+    // =========================
+    // LOAD DATA
+    // =========================
+
+    async function loadSpreadsheetData(){
+
+      const response =
+        await fetch(
+          WEB_APP_URL
+        );
+
+      const data =
+        await response.json();
+
+      weddingData = [];
+
+      savingHistory = [];
+
+      totalSavings = 0;
+
+      data.forEach(item => {
+
+        // SKIP KOSONG
+
+        if(!item.category){
+          return;
+        }
+
+        // TABUNGAN
+
+        if(
+          item.category ===
+          "TABUNGAN"
+        ){
+
+          savingHistory.push({
+
+            id:item.id,
+
+            name:item.item_name,
+
+            savings_amount:
+              item.estimated_cost,
+
+            notes:item.notes
+
+          });
+
+          totalSavings +=
+            Number(
+              item.estimated_cost
+            );
+
+        }
+
+        // WEDDING
+
+        else{
+
+          weddingData.push(item);
+
+        }
+
+      });
+
+      renderWeddingTable();
+
+      renderSavingTable();
+
+      updateStats();
+
+      updateSavingDisplay();
+
+    }
+
+    // LOAD AWAL
+
+    loadSpreadsheetData();
+
+    // =========================
+    // SEARCH FILTER
+    // =========================
+
+    searchInput.addEventListener(
+      "input",
+      renderWeddingTable
+    );
+
+    filterCategory.addEventListener(
+      "change",
+      renderWeddingTable
+    );
+
+    filterStatus.addEventListener(
+      "change",
+      renderWeddingTable
+    );
+
+    // =========================
+    // FORM WEDDING
+    // =========================
+
+    plannerForm.addEventListener(
+      "submit",
+      async (e)=>{
+
+      e.preventDefault();
+
+      const data = {
+
+        category:
+          document.getElementById(
+            "category"
+          ).value,
+
+        item_name:
+          document.getElementById(
+            "item"
+          ).value,
+
+        vendor:
+          document.getElementById(
+            "vendor"
+          ).value,
+
+        estimated_cost:
+          Number(
+            document.getElementById(
+              "cost"
+            ).value
+          ),
+
+        payment_status:
+          document.getElementById(
+            "status"
+          ).value,
+
+        notes:
+          document.getElementById(
+            "notes"
+          ).value
+
+      };
+
+      // EDIT MODE
+
+    if(editId){
+
+    data.action =
+        "edit";
+
+    data.id =
+        editId;
+
+    try{
+
+        await fetch(
+        WEB_APP_URL,
+        {
+
+            method:"POST",
+
+            body:JSON.stringify(
+            data
+            )
+
+        }
+        );
+
+        // FETCH ULANG KHUSUS EDIT
+
+        await loadSpreadsheetData();
+
+        showToast(
+        "Data berhasil diupdate"
+        );
+
+    }catch(err){
+
+        showToast(
+        "Gagal update data",
+        true
+        );
+
+    }
+
+    // RESET
+
+    editId = null;
+
+    plannerForm.reset();
+
+    return;
+
+    }
+
+    //   await fetch(
+    //     WEB_APP_URL,
+    //     {
+
+    //       method:"POST",
+
+    //       body:JSON.stringify(
+    //         data
+    //       )
+
+    //     }
+    //   );
+    // ======================
+    // UI UPDATE DULU Simpan data
+    // ======================
+
+    // ID SEMENTARA
+
+    data.id =
+    Date.now().toString();
+
+    // PUSH KE ARRAY
+
+    weddingData.push(data);
+
+    // RENDER LANGSUNG
+
+    renderWeddingTable();
+
+    updateStats();
+
+    showToast(
+    "Data berhasil disimpan"
+    );
+
+    // RESET FORM
+
+    plannerForm.reset();
+
+    // ======================
+    // BACKGROUND SAVE
+    // ======================
+
+    try{
+
+    await fetch(
+        WEB_APP_URL,
+        {
+        method:"POST",
+        body:JSON.stringify(data)
+        }
+    );
+
+    }catch(err){
+
+    // HAPUS LAGI JIKA GAGAL
+
+    weddingData =
+    weddingData.filter(
+        item =>
+        item.id !== data.id
+    );
+
+    renderWeddingTable();
+
+    updateStats();
+
+    showToast(
+        "Gagal menyimpan",
+        true
+    );
+
+    } // Update end
+    
+      editId = null;
+
+      await loadSpreadsheetData();
+
+      plannerForm.reset();
+
+      showToast(
+        "Data berhasil disimpan"
+      );
+
+    });
+
+    // =========================
+    // FORM TABUNGAN
+    // =========================
+
+    savingForm.addEventListener(
+      "submit",
+      async (e)=>{
+
+      e.preventDefault();
+
+      const savingData = {
+
+        type:"saving",
+
+        name:
+          document.getElementById(
+            "savingName"
+          ).value,
+
+        savings_amount:
+          Number(
+            document.getElementById(
+              "savingAmount"
+            ).value
+          ),
+
+        notes:
+          document.getElementById(
+            "savingNotes"
+          ).value
+
+      };
+
+        // ======================
+        // BUAT DATA BARU
+        // ======================
+
+        const newSaving = {
+
+        id:
+            Date.now().toString(),
+
+        name:
+            savingData.name,
+
+        savings_amount:
+            savingData.savings_amount,
+
+        notes:
+            savingData.notes
+
+        };
+
+        // ======================
+        // UPDATE UI DULU
+        // ======================
+
+        // MASUKKAN KE ARRAY
+
+        savingHistory.unshift(
+        newSaving
+        );
+
+        // UPDATE TOTAL
+
+        totalSavings +=
+        Number(
+            newSaving.savings_amount
+        );
+
+        // RENDER
+
+        renderSavingTable();
+
+        updateSavingDisplay();
+
+        showToast(
+        "Tabungan berhasil disimpan"
+        );
+
+        // RESET FORM
+
+        savingForm.reset();
+
+        // ======================
+        // BACKGROUND SAVE
+        // ======================
+
+        try{
+
+        await fetch(
+            WEB_APP_URL,
+            {
+
+            method:"POST",
+
+            body:JSON.stringify(
+                savingData
+            )
+
+            }
+        );
+
+        }catch(err){
+
+        // HAPUS LAGI JIKA GAGAL
+
+        savingHistory =
+        savingHistory.filter(
+            item =>
+            item.id !== newSaving.id
+        );
+
+        totalSavings -=
+            Number(
+            newSaving.savings_amount
+            );
+
+        renderSavingTable();
+
+        updateSavingDisplay();
+
+        showToast(
+            "Gagal menyimpan tabungan",
+            true
+        );
+
+        }// update end
+
+      await loadSpreadsheetData();
+
+      savingForm.reset();
+
+      showToast(
+        "Tabungan berhasil disimpan"
+      );
+
+    });
+
+    // =========================
+    // RENDER WEDDING
+    // =========================
+
+    function renderWeddingTable(){
+
+      tableBody.innerHTML = "";
+
+      const keyword =
+        searchInput.value
+        .toLowerCase();
+
+      const category =
+        filterCategory.value;
+
+      const status =
+        filterStatus.value;
+
+      const filtered =
+        weddingData.filter(item => {
+
+          const matchSearch =
+
+            item.item_name
+            .toLowerCase()
+            .includes(keyword)
+
+            ||
+
+            item.vendor
+            .toLowerCase()
+            .includes(keyword);
+
+          const matchCategory =
+
+            category === "Semua"
+            ||
+            item.category === category;
+
+          const matchStatus =
+
+            status === "Semua"
+            ||
+            item.payment_status === status;
+
+          return (
+            matchSearch &&
+            matchCategory &&
+            matchStatus
+          );
+
+        });
+
+      if(filtered.length === 0){
+
+        tableBody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="7"
+              class="
+                text-center
+                py-10
+                text-gray-400
+              "
+            >
+
+              Data tidak ditemukan 😢
+
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+
+      }
+
+      filtered.forEach(data => {
+
+        const tr =
+          document.createElement(
+            "tr"
+          );
+
+        tr.className =
+          "table-row border-b";
+
+        tr.innerHTML = `
+
+          <td class="px-6 py-5">
+            ${data.category}
+          </td>
+
+          <td class="px-6 py-5">
+            ${data.item_name}
+          </td>
+
+          <td class="px-6 py-5">
+            ${data.vendor || '-'}
+          </td>
+
+          <td class="
+            px-6
+            py-5
+            font-bold
+          ">
+            Rp ${Number(
+              data.estimated_cost
+            ).toLocaleString('id-ID')}
+          </td>
+
+          <td class="px-6 py-5">
+            ${data.payment_status}
+          </td>
+
+          <td class="px-6 py-5">
+            ${data.notes || '-'}
+          </td>
+
+          <td class="px-6 py-5">
+
+            <div class="flex gap-2">
+
+              <button
+                onclick="editData('${data.id}')"
+                class="
+                  bg-blue-100
+                  text-blue-700
+                  px-3 py-2
+                  rounded-xl
+                "
+              >
+
+                ✏️
+
+              </button>
+
+              <button
+                onclick="deleteData('${data.id}')"
+                class="
+                  bg-red-100
+                  text-red-700
+                  px-3 py-2
+                  rounded-xl
+                "
+              >
+
+                🗑️
+
+              </button>
+
+            </div>
+
+          </td>
+
+        `;
+
+        tableBody.appendChild(
+          tr
+        );
+
+      });
+
+    }
+
+    // =========================
+    // RENDER TABUNGAN
+    // =========================
+
+    function renderSavingTable(){
+
+      savingTableBody.innerHTML = "";
+
+      if(
+        savingHistory.length === 0
+      ){
+
+        savingTableBody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="3"
+              class="
+                text-center
+                py-10
+                text-gray-400
+              "
+            >
+
+              Belum ada tabungan 😢
+
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+
+      }
+
+      savingHistory.forEach(data => {
+
+        const tr =
+          document.createElement(
+            "tr"
+          );
+
+        tr.className =
+          "table-row border-b";
+
+        tr.innerHTML = `
+
+          <td class="px-6 py-5">
+            ${data.name}
+          </td>
+
+          <td class="
+            px-6
+            py-5
+            font-bold
+            text-blue-600
+          ">
+            Rp ${Number(
+              data.savings_amount
+            ).toLocaleString('id-ID')}
+          </td>
+
+          <td class="px-6 py-5">
+            ${data.notes || '-'}
+          </td>
+
+        `;
+
+        savingTableBody.appendChild(
+          tr
+        );
+
+      });
+
+    }
+
+    // =========================
+    // EDIT
+    // =========================
+
+    function editData(id){
+
+      const data =
+        weddingData.find(
+          item =>
+          String(item.id)
+          ===
+          String(id)
+        );
+
+      if(!data){
+        return;
+      }
+
+      editId = id;
+
+      document.getElementById(
+        "category"
+      ).value =
+      data.category;
+
+      document.getElementById(
+        "item"
+      ).value =
+      data.item_name;
+
+      document.getElementById(
+        "vendor"
+      ).value =
+      data.vendor;
+
+      document.getElementById(
+        "cost"
+      ).value =
+      data.estimated_cost;
+
+      document.getElementById(
+        "status"
+      ).value =
+      data.payment_status;
+
+      document.getElementById(
+        "notes"
+      ).value =
+      data.notes;
+
+      showToast(
+        "Mode edit aktif"
+      );
+
+      window.scrollTo({
+
+        top:0,
+
+        behavior:'smooth'
+
+      });
+
+    }
+
+    // =========================
+    // DELETE
+    // =========================
+
+    async function deleteData(id){
+
+      const confirmDelete =
+        confirm(
+          "Yakin ingin menghapus data ini?"
+        );
+
+      if(!confirmDelete){
+        return;
+      }
+
+    //   await fetch(
+    //     WEB_APP_URL,
+    //     {
+
+    //       method:"POST",
+
+    //       body:JSON.stringify({
+
+    //         action:"delete",
+
+    //         id:id
+
+    //       })
+
+    //     }
+    //   );
+
+    // ======================
+    // SIMPAN DATA LAMA Update start
+    // ======================
+
+    const oldData =
+    [...weddingData];
+
+    // ======================
+    // UI UPDATE DULU
+    // ======================
+
+    weddingData =
+    weddingData.filter(
+    item =>
+    String(item.id)
+    !==
+    String(id)
+    );
+
+    renderWeddingTable();
+
+    updateStats();
+
+    showToast(
+    "Data berhasil dihapus"
+    );
+
+    // ======================
+    // BACKGROUND DELETE
+    // ======================
+
+    try{
+
+    await fetch(
+        WEB_APP_URL,
+        {
+        method:"POST",
+        body:JSON.stringify({
+
+            action:"delete",
+
+            id:id
+
+        })
+        }
+    );
+
+    }catch(err){
+
+    // BALIKKAN DATA
+
+    weddingData = oldData;
+
+    renderWeddingTable();
+
+    updateStats();
+
+    showToast(
+        "Gagal menghapus",
+        true
+    );
+
+    } // Update End
+
+      await loadSpreadsheetData();
+
+      showToast(
+        "Data berhasil dihapus"
+      );
+
+    }
+
+    // =========================
+    // UPDATE STATS
+    // =========================
+
+    function updateStats(){
+
+      totalBudget = 0;
+
+      totalPaid = 0;
+
+      weddingData.forEach(data => {
+
+        totalBudget +=
+          Number(
+            data.estimated_cost
+          );
+
+        if(
+          data.payment_status ===
+          "Sudah Lunas"
+        ){
+
+          totalPaid +=
+            Number(
+              data.estimated_cost
+            );
+
+        }
+
+      });
+
+      document.getElementById(
+        "totalBudget"
+      ).innerText =
+      "Rp " +
+      totalBudget
+      .toLocaleString('id-ID');
+
+      document.getElementById(
+        "totalPaid"
+      ).innerText =
+      "Rp " +
+      totalPaid
+      .toLocaleString('id-ID');
+
+      document.getElementById(
+        "remaining"
+      ).innerText =
+      "Rp " +
+      (
+        totalBudget -
+        totalPaid
+      ).toLocaleString('id-ID');
+
+    }
+
+    // =========================
+    // UPDATE TABUNGAN
+    // =========================
+
+    function updateSavingDisplay(){
+
+      // TOTAL TABUNGAN
+
+      document.getElementById(
+        "totalSavings"
+      ).innerText =
+      "Rp " +
+      totalSavings
+      .toLocaleString('id-ID');
+
+      // SISA TABUNGAN
+
+      const remainingSaving =
+        totalSavings - totalPaid;
+
+      document.getElementById(
+        "remainingSavings"
+      ).innerText =
+      "Rp " +
+      remainingSaving
+      .toLocaleString('id-ID');
+
+    }
+
+    // =========================
+    // TOAST
+    // =========================
+
+    function showToast(message){
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+      toast.innerText =
+        message;
+
+      toast.classList.remove(
+        "hidden"
+      );
+
+      setTimeout(()=>{
+
+        toast.classList.add(
+          "hidden"
+        );
+
+      },3000);
+
+    }
+
+  </script>
+
+</body>
+</html>
